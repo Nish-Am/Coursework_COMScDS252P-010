@@ -11,4 +11,4 @@ class Staff(Person):
     def get_info(self):
         ''' returns the public infromation about a Staff Memeber'''
 
-        print(f'Staff Information \n {self.name} is a Staff member of the University \n Department - {self.department}')
+        print(f'\n Staff Information \n {self.name} is a Staff member of the University \n Department - {self.department}')

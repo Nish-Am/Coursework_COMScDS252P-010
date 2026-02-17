@@ -11,4 +11,4 @@ class Faculty(Person):
     def get_info(self):
         ''' returns the public infromation about a faculty'''
 
-        print(f'Faculty Level Information \n {self.name} is a Faculty of the University \n Department - {self.department}')
+        print(f'\n Faculty Level Information \n {self.name} is a Faculty of the University \n Department - {self.department}')
