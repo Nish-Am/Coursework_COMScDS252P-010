@@ -1,0 +1,10 @@
+import person
+
+class Student(person):
+    
+    def __init__(self, name, person_id, email, phone, student_id, major, enrollment_date):
+        super.__init__(name, person_id, email, phone)
+        self.student_id = student_id
+        self.major = major
+        self.enrollment_date = enrollment_date
+    
