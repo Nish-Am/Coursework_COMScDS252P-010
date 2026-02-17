@@ -7,7 +7,7 @@ class Person:
 
     def get_info(self):
         ''' returns the public infromation about the person'''
-        print(f'{self.name} is a memeber of University')
+        print(f'This is a generic person level information. \n {self.name} is a memeber of University')
 
     def update_info(self, email, phone):
         '''update person info'''
