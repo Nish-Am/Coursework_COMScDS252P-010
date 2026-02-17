@@ -1,6 +1,6 @@
-import person
+from person import Person
 
-class Student(person):
+class Student(Person):
     
     def __init__(self, name, person_id, email, phone, student_id, major, enrollment_date):
         super.__init__(name, person_id, email, phone)
