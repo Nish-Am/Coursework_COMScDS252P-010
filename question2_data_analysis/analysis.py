@@ -26,4 +26,6 @@ class DataAnalyser:
         # Rating distribution: frequency count
         print(books_data['Star Rating'].value_counts().sort_index())
 
+        # test modify
+
         print(f'\n---- Inferential Statistics ---')
