@@ -1,55 +1,67 @@
 import pandas as pd
+import csv
 
-def get_price_category(price):
-    if price < 20: 
-        return 'Budget'
-    elif price > 40: 
-        return 'Premium'
-    else : 
-        return 'Mid-range'
+raw_data_path = 'question2_data_analysis/data/raw_books_data.csv'
+cleaned_data_path = 'question2_data_analysis/data/cleaned_books_data.csv'
 
-books_data = pd.read_csv('books_data.csv')
+class DataFeature:   
 
-# Price standardization: Remove '£' symbol, convert to float
-books_data['Price (£)'] = books_data['Price (£)'].str.replace('Â£', '').astype(float)
+    @staticmethod 
+    def get_price_category(price):
+        ''' categorize prices accord to the amount '''
 
-print(books_data.head())
-print(books_data.info)
-print(books_data.shape)
+        if price < 20: 
+            return 'Budget'
+        elif price > 40: 
+            return 'Premium'
+        else : 
+            return 'Mid-range'
 
-# Rating conversion: Convert text ratings to numeric (1-5) - already numeric 
-print(books_data['Star Rating'].dtype) # output is int64
+    @staticmethod    
+    def extract_star_rating(star_class):
+        ''' Convert star rating text to number '''
 
-# Handle missing data: Identify and address null values
-print(books_data.isna().sum()) # no null values 
+        rating_dict = {
+            "One": 1,
+            "Two": 2,
+            "Three": 3,
+            "Four": 4,
+            "Five": 5
+        }
+        for key in rating_dict:
+            if key in star_class:
+                return rating_dict[key]
+        return None
+    
+    @staticmethod
+    def clean_data():
+        books_data = pd.read_csv(raw_data_path)
 
-# Remove duplicates
-print(books_data.duplicated().sum()) # no duplicates
+        # Price standardization: Remove '£' symbol, convert to float
+        books_data['Price (£)'] = books_data['Price (£)'].str.replace('Â£', '').astype(float)        
 
-# Create derived columns
-books_data['price_category'] = books_data['Price (£)'].apply(get_price_category)
-print(books_data[['Price (£)', 'price_category']] )
-''''''
-# in_stock: Boolean based on availability
-books_data['in_stock'] = books_data['Availability'].eq('In stock')
-print(books_data[['Availability', 'in_stock']])
+        # Rating conversion: Convert text ratings to numeric (1-5) - already numeric 
+        books_data['Star Rating'] = books_data['Star Rating'].apply(DataFeature.extract_star_rating)
+        
+        # Handle missing data: Identify and address null values
+        print(books_data.isna().sum()) # no null values 
 
-# Central tendency: mean, median, mode for prices
-price_mean = round(books_data['Price (£)'].mean(), 2)
-price_median = round(books_data['Price (£)'].median(), 2)
-price_mode = round(books_data['Price (£)'].mode(), 2)
+        # Remove duplicates
+        print(books_data.duplicated().sum()) # no duplicates
 
-print(f' price mean - {price_mean}\n price median - {price_median} \n price mode - {price_mode}')
+        # Create derived columns
+        books_data['price_category'] = books_data['Price (£)'].apply(DataFeature.get_price_category)
+        print(books_data[['Price (£)', 'price_category']] )
+        
+        # in_stock: Boolean based on availability
+        books_data['in_stock'] = books_data['Availability'].eq('In stock')
+        print(books_data[['Availability', 'in_stock']])
 
-# Dispersion: standard deviation, range
-price_std = books_data['Price (£)'].std()
-price_range = books_data['Price (£)'].max() - books_data['Price (£)'].min()
-print(f'Price range is {price_range}')
+        print(books_data.head())
+        # print(books_data.info)
+        # print(books_data.shape)
 
-# Group statistics: average price by category (top 5)
-print(books_data.groupby('Category')['Price (£)'].mean().round(2))
+        # Save to CSV
+        books_data.to_csv(cleaned_data_path, index=False, quoting=csv.QUOTE_ALL)
 
-# Rating distribution: frequency count
-print(books_data['Star Rating'].value_counts().sort_index())
-
-#print(books_data.head())
+        print(f'\nCleaning complete! {len(books_data)} books saved to cleaned_books_data.csv')
