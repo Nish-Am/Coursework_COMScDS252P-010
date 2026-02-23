@@ -1,9 +1,6 @@
 import pandas as pd
 import csv
 
-raw_data_path = 'question2_data_analysis/data/raw_books_data.csv'
-cleaned_data_path = 'question2_data_analysis/data/cleaned_books_data.csv'
-
 class DataFeature:   
 
     @staticmethod 
@@ -34,7 +31,7 @@ class DataFeature:
         return None
     
     @staticmethod
-    def clean_data():
+    def clean_data(raw_data_path, cleaned_data_path):
         books_data = pd.read_csv(raw_data_path)
 
         # Price standardization: Remove '£' symbol, convert to float

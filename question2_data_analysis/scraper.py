@@ -7,8 +7,6 @@ import os
 
 BASE_URL = 'http://books.toscrape.com/catalogue/page-{}.html'
 
-raw_data_path = 'question2_data_analysis/data/raw_books_data.csv'
-
 headers = {
     'User-Agent': 'Mozilla/5.0'
 }
@@ -33,7 +31,7 @@ class Scrpaer:
     # Scrape 3 pages (100 books minimum)
     
     @staticmethod
-    def scrape_data():
+    def scrape_data(raw_data_path):
         ''' scrape and save raw data '''
         books_data = []
 
