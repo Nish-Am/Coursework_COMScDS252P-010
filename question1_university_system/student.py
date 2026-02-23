@@ -26,9 +26,9 @@ class Student(Person):
 
         if course_code not in self.enrolled_courses:
             self.enrolled_courses.append(course_code)
-            print(f"{self.name} has been enrolled in {course_code}.")
+            print(f'{self.name} has been enrolled in {course_code}.')
         else:
-            print(f"{self.name} is already enrolled in {course_code}.")
+            print(f'{self.name} is already enrolled in {course_code}.')
 
 
     def add_grade(self, course_code, grade):
@@ -39,9 +39,9 @@ class Student(Person):
         # update grade
         if course_code in self.enrolled_courses:
             self.grades[course_code] = grade
-            print(f"Grade {grade} added for {course_code}.")
+            print(f'Grade {grade} added for {course_code}.')
         else:
-            print(f"{self.name} is not enrolled in {course_code}.")
+            print(f'{self.name} is not enrolled in {course_code}.')
 
     @property
     def calculate_gpa(self):
@@ -62,11 +62,18 @@ class Student(Person):
         ''' Return academic status based on GPA. '''
 
         if self.gpa >= 3.5:
-            return "Dean's List"
+            return 'Dean\'s List'
         elif self.gpa >= 2.0:
-            return "Good Standing"
+            return 'Good Standing'
         else:
-            return "Probation"
+            return 'Probation'
+        
+    def get_responsibilities(self):
+        ''' returns responsinilities of a student '''
+
+        print(f'\nStudent {self.name} responsibilities are : \n')
+        print('Attend lectures and complete assignments.')
+        print('Prepare for exams and submit projects.')
 
 
 

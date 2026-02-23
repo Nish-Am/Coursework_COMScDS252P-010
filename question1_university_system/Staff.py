@@ -12,3 +12,10 @@ class Staff(Person):
         ''' returns the public infromation about a Staff Memeber'''
 
         print(f'\n Staff Information \n {self.name} is a Staff member of the University \n Department - {self.department}')
+
+    def get_responsibilities(self):
+        ''' returns responsinilities of Staff '''
+        
+        print(f'\nStaff {self.name} responsibilities are : \n')
+        print('Manage administrative tasks and support operations.')
+        print('Handle role-specific organizational responsibilities.')
