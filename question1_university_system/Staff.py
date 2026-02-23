@@ -19,3 +19,5 @@ class Staff(Person):
         print(f'\nStaff {self.name} responsibilities are : \n')
         print('Manage administrative tasks and support operations.')
         print('Handle role-specific organizational responsibilities.')
+
+    

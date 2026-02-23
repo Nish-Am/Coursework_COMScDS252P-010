@@ -6,7 +6,7 @@ from faculty import Course
 from Staff import Staff
 
 def main():
-    person_01 = Person('Uni Memeber 01', 'P001', 'member01@uni.lk', '+947012245')
+    person_01 = Person('Uni Memeber', 'P001', 'member01@uni.lk', '+947012245')
     student_01 = Student('Anne', 'P002', 'anne@uni.lk', '+94234123', 'S001', 'DS', '2025/10/01')
     faculty_01 = Faculty(name='Ben', 
                          person_id='P003',  
