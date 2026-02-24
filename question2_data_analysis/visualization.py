@@ -5,6 +5,7 @@ import plotly.express as px
 
 class Visualizer:
     def visualize_data(cleaned_data_path):
+        ''' Data Visualization '''
 
         # read data
         books_data = pd.read_csv(cleaned_data_path)

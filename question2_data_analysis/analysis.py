@@ -5,6 +5,7 @@ from scipy.stats import ttest_ind
 class DataAnalyser:
 
     def analyse_data(cleaned_data_path):
+        ''' Statistical Analysis on cleaned data '''
 
         # read data
         books_data = pd.read_csv(cleaned_data_path)

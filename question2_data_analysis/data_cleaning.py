@@ -32,6 +32,8 @@ class DataFeature:
     
     @staticmethod
     def clean_data(raw_data_path, cleaned_data_path):
+        ''' clean data and save separately '''
+
         books_data = pd.read_csv(raw_data_path)
 
         # Price standardization: Remove '£' symbol, convert to float
@@ -55,8 +57,8 @@ class DataFeature:
         print(books_data[['Availability', 'in_stock']])
 
         print(books_data.head())
-        # print(books_data.info)
-        # print(books_data.shape)
+        print(books_data.info)
+        print(books_data.shape)
 
         # Save to CSV
         books_data.to_csv(cleaned_data_path, index=False, quoting=csv.QUOTE_ALL)
