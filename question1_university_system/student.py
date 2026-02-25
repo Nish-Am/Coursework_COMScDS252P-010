@@ -4,18 +4,18 @@ class Student(Person):
     
     def __init__(self, name, person_id, email, phone, student_id, major, enrollment_date):
         super().__init__(name, person_id, email, phone)
-        self.student_id = student_id
+        self.__student_id = student_id
         self.major = major
         self.enrollment_date = enrollment_date
 
         self.enrolled_courses = list()
         self.grades = dict()
-        self.gpa = 0
+        self.__gpa = 0
     
     def get_info(self):
         ''' returns the public infromation about a student'''
 
-        print(f'\n Student Information \n {self.name} is a student of the University \n Student ID - {self.student_id}')
+        print(f'\n Student Information \n {self.name} is a student of the University.')
 
 
     def enroll_course(self, course_code): 
@@ -54,16 +54,16 @@ class Student(Person):
                 total_marks += grade
 
         if course_count > 0 :
-            self.gpa = round(total_marks / course_count, 2)
+            self.__gpa = round(total_marks / course_count, 2)
         else :
-            self.gpa = 0
+            self.__gpa = 0
 
     def get_academic_status(self):
         ''' Return academic status based on GPA. '''
 
-        if self.gpa >= 3.5:
+        if self.__gpa >= 3.5:
             return 'Dean\'s List'
-        elif self.gpa >= 2.0:
+        elif self.__gpa >= 2.0:
             return 'Good Standing'
         else:
             return 'Probation'

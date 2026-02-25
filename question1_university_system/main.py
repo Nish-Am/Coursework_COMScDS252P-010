@@ -31,6 +31,13 @@ def main():
     student_01.get_info()
     faculty_01.get_info()
 
+    # access public and priivate attributes
+    print('\nretrieving student\'s general info')
+    print(student_01.name)
+ 
+    print('\nretrieving student\'s private info')
+    print(student_01.__student_id)
+
     # course enrollment functionality
     print('\n Course Enrollment Infromation \n')
 
@@ -72,8 +79,6 @@ def main():
         student_01.calculate_gpa()
 
         print(f' {student_01.name} - GPA - {student_01.gpa} - Academic Status - {student_01.get_academic_status()}')
-
-        
 
     except ValueError as e:
         # Catch any unhandled ValueError from the class
