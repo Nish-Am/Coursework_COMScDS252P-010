@@ -18,7 +18,6 @@ class Visualizer:
 
         plt.title('Price Distribution')
         plt.xlabel('Price (£)')
-        plt.ylabel('Frequency')
 
         # Box plot : Price comparison across top 5 categories
         top5 = books_data['Category'].value_counts().head(5).index
